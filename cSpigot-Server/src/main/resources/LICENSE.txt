@@ -1,0 +1,13 @@
+This file is the sole property of Refine Development © 2021 - 2024. Originally named and published as cSpigot v4.3.
+All code and it's usages in the package "io.github.cspigot" directly belongs to the owners of Refine Development.
+Claiming ownership of the code or the file is strictly prohibited. Redistribution of the file, it's decompiled source
+or original source is completely prohibited. Modifying the file or it's contents is also prohibited.
+
+Credits:
+- PerrySwag [Worked on various optimizations and enhancements in NMS]
+- ngxDevs [For base of the Detailed Knockback profile]
+- Samsuik/IonSpigot [Some TNT Patches & Smooth Potions]
+- NachoSpigot & Collaborators [For basic utilities and obf helpers]
+- WindColor-Dev [For base of Exclusive Knockback profile]
+- Revxrsal [For ASM Invoke Util]
+- Rongmario [For ImagineBreaker]

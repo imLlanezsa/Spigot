@@ -1,0 +1,43 @@
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.github.cspigot</groupId>
+    <artifactId>cSpigot-Parent</artifactId>
+    <version>1.8.8-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>cSpigot-Parent</name>
+    <description>Parent project for all cSpigot modules.</description>
+    <url>https://github.com/RefineDevelopment/cSpigot</url>
+
+    <modules>
+        <module>cSpigot-Server</module>
+        <module>cSpigot-API</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <repositories>
+        <repository>
+            <id>aikar</id>
+            <url>https://repo.aikar.co/content/groups/aikar/</url>
+        </repository>
+        <repository>
+            <id>destroystokyo-repo</id>
+            <url>https://papermc.io/repo/repository/maven-public/</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>elmakers-repo</id>
+            <url>https://maven.elmakers.com/repository/</url>
+        </repository>
+    </repositories>
+
+</project>
