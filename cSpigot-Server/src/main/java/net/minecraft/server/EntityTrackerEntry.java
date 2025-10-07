@@ -212,9 +212,6 @@ public class EntityTrackerEntry {
 
                         packet = new PacketPlayOutEntityTeleport(this.tracker.getId(), i, j, k, (byte) l, (byte) i1, this.tracker.onGround);
                     }
-                    if (SettingsConfig.SKIP_USELESS_PACKETS && isUselessPacket(packet)) {
-                        packet = null; // Purpur
-                    }
                 }
 
                 boolean flag3 = this.u || this.tracker.ai;
@@ -401,23 +398,6 @@ public class EntityTrackerEntry {
         }
 
     }
-
-
-    // Purpur start
-    protected boolean isUselessPacket(Packet<?> possibleUselessPacket) {
-        if (possibleUselessPacket instanceof PacketPlayOutEntity) {
-            PacketPlayOutEntity packet = (PacketPlayOutEntity) possibleUselessPacket;
-            if (possibleUselessPacket instanceof PacketPlayOutEntity.PacketPlayOutRelEntityMove) {
-                return packet.getX() == 0 && packet.getY() == 0 && packet.getZ() == 0;
-            } else if (possibleUselessPacket instanceof PacketPlayOutEntity.PacketPlayOutRelEntityMoveLook) {
-                return packet.getX() == 0 && packet.getY() == 0 && packet.getZ() == 0 && packet.getYaw() == 0 && packet.getPitch() == 0;
-            } else if (possibleUselessPacket instanceof PacketPlayOutEntity.PacketPlayOutEntityLook) {
-                return packet.getYaw() == 0 && packet.getPitch() == 0;
-            }
-        }
-        return false;
-    }
-    // Purpur end
 
     public void updatePlayer(EntityPlayer entityplayer) {
         // You don't tick yourself
