@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 public class PacketPlayOutSpawnEntityLiving implements Packet<PacketListenerPlayOut> {
-
     private int a;
     private int b;
     private int c;
@@ -19,22 +18,22 @@ public class PacketPlayOutSpawnEntityLiving implements Packet<PacketListenerPlay
     private DataWatcher l;
     private List<DataWatcher.WatchableObject> m;
 
-    public PacketPlayOutSpawnEntityLiving() {}
+    public PacketPlayOutSpawnEntityLiving() {
+    }
 
     public PacketPlayOutSpawnEntityLiving(EntityLiving entityliving) {
         this.a = entityliving.getId();
-        this.b = (byte) EntityTypes.a(entityliving);
-        this.c = MathHelper.floor(entityliving.locX * 32.0D);
-        this.d = MathHelper.floor(entityliving.locY * 32.0D);
-        this.e = MathHelper.floor(entityliving.locZ * 32.0D);
-        this.i = (byte) ((int) (entityliving.yaw * 256.0F / 360.0F));
-        this.j = (byte) ((int) (entityliving.pitch * 256.0F / 360.0F));
-        this.k = (byte) ((int) (entityliving.aK * 256.0F / 360.0F));
-        double d0 = 3.9D;
+        this.b = (byte)EntityTypes.a(entityliving);
+        this.c = MathHelper.floor(entityliving.locX * (double)32.0F);
+        this.d = MathHelper.floor(entityliving.locY * (double)32.0F);
+        this.e = MathHelper.floor(entityliving.locZ * (double)32.0F);
+        this.i = (byte)((int)(entityliving.yaw * 256.0F / 360.0F));
+        this.j = (byte)((int)(entityliving.pitch * 256.0F / 360.0F));
+        this.k = (byte)((int)(entityliving.aK * 256.0F / 360.0F));
+        double d0 = 3.9;
         double d1 = entityliving.motX;
         double d2 = entityliving.motY;
         double d3 = entityliving.motZ;
-
         if (d1 < -d0) {
             d1 = -d0;
         }
@@ -59,9 +58,9 @@ public class PacketPlayOutSpawnEntityLiving implements Packet<PacketListenerPlay
             d3 = d0;
         }
 
-        this.f = (int) (d1 * 8000.0D);
-        this.g = (int) (d2 * 8000.0D);
-        this.h = (int) (d3 * 8000.0D);
+        this.f = (int)(d1 * (double)8000.0F);
+        this.g = (int)(d2 * (double)8000.0F);
+        this.h = (int)(d3 * (double)8000.0F);
         this.l = entityliving.getDataWatcher();
     }
 
@@ -97,5 +96,109 @@ public class PacketPlayOutSpawnEntityLiving implements Packet<PacketListenerPlay
 
     public void a(PacketListenerPlayOut packetlistenerplayout) {
         packetlistenerplayout.a(this);
+    }
+
+    public int getA() {
+        return this.a;
+    }
+
+    public int getB() {
+        return this.b;
+    }
+
+    public int getC() {
+        return this.c;
+    }
+
+    public int getD() {
+        return this.d;
+    }
+
+    public int getE() {
+        return this.e;
+    }
+
+    public int getF() {
+        return this.f;
+    }
+
+    public int getG() {
+        return this.g;
+    }
+
+    public int getH() {
+        return this.h;
+    }
+
+    public byte getI() {
+        return this.i;
+    }
+
+    public byte getJ() {
+        return this.j;
+    }
+
+    public byte getK() {
+        return this.k;
+    }
+
+    public DataWatcher getL() {
+        return this.l;
+    }
+
+    public List<DataWatcher.WatchableObject> getM() {
+        return this.m;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public void setD(int d) {
+        this.d = d;
+    }
+
+    public void setE(int e) {
+        this.e = e;
+    }
+
+    public void setF(int f) {
+        this.f = f;
+    }
+
+    public void setG(int g) {
+        this.g = g;
+    }
+
+    public void setH(int h) {
+        this.h = h;
+    }
+
+    public void setI(byte i) {
+        this.i = i;
+    }
+
+    public void setJ(byte j) {
+        this.j = j;
+    }
+
+    public void setK(byte k) {
+        this.k = k;
+    }
+
+    public void setL(DataWatcher l) {
+        this.l = l;
+    }
+
+    public void setM(List<DataWatcher.WatchableObject> m) {
+        this.m = m;
     }
 }

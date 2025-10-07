@@ -1,15 +1,17 @@
 package net.minecraft.server;
 
 import java.io.IOException;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.chat.ComponentSerializer;
 
 public class PacketPlayOutPlayerListHeaderFooter implements Packet<PacketListenerPlayOut> {
-
-    public net.md_5.bungee.api.chat.BaseComponent[] header, footer; // Paper
-
+    public BaseComponent[] header;
+    public BaseComponent[] footer;
     private IChatBaseComponent a;
     private IChatBaseComponent b;
 
-    public PacketPlayOutPlayerListHeaderFooter() {}
+    public PacketPlayOutPlayerListHeaderFooter() {
+    }
 
     public PacketPlayOutPlayerListHeaderFooter(IChatBaseComponent ichatbasecomponent) {
         this.a = ichatbasecomponent;
@@ -21,30 +23,53 @@ public class PacketPlayOutPlayerListHeaderFooter implements Packet<PacketListene
     }
 
     public void b(PacketDataSerializer packetdataserializer) throws IOException {
-        // Paper start
         if (this.header != null) {
-            packetdataserializer.a(net.md_5.bungee.chat.ComponentSerializer.toString(this.header));
+            packetdataserializer.a(ComponentSerializer.toString(this.header));
         } else {
             packetdataserializer.a(this.a);
         }
 
         if (this.footer != null) {
-            packetdataserializer.a(net.md_5.bungee.chat.ComponentSerializer.toString(this.footer));
+            packetdataserializer.a(ComponentSerializer.toString(this.footer));
         } else {
             packetdataserializer.a(this.b);
         }
-        // Paper end
+
     }
 
     public void a(PacketListenerPlayOut packetlistenerplayout) {
         packetlistenerplayout.a(this);
     }
 
-    // PaperSpigot start - fix compile error
-    /*
-    public void a(PacketListener packetlistener) {
-        this.a((PacketListenerPlayOut) packetlistener);
+    public BaseComponent[] getHeader() {
+        return this.header;
     }
-    */
-    // PaperSpigot end
+
+    public BaseComponent[] getFooter() {
+        return this.footer;
+    }
+
+    public IChatBaseComponent getA() {
+        return this.a;
+    }
+
+    public IChatBaseComponent getB() {
+        return this.b;
+    }
+
+    public void setHeader(BaseComponent[] header) {
+        this.header = header;
+    }
+
+    public void setFooter(BaseComponent[] footer) {
+        this.footer = footer;
+    }
+
+    public void setA(IChatBaseComponent a) {
+        this.a = a;
+    }
+
+    public void setB(IChatBaseComponent b) {
+        this.b = b;
+    }
 }

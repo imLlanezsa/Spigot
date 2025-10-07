@@ -3,133 +3,193 @@ package net.minecraft.server;
 import java.io.IOException;
 
 public class PacketPlayOutEntity implements Packet<PacketListenerPlayOut> {
-
-    protected int a;
-    // cSpigot start - OBF Helpers
-    protected byte b; public byte getX() { return b; }
-    protected byte c; public byte getY() { return c; }
-    protected byte d; public byte getZ() { return d; }
-    // cSpigot end
-    protected byte e; public byte getYaw() { return e; }
-    protected byte f; public byte getPitch() { return f; }
+    public int a;
+    protected byte b;
+    protected byte c;
+    protected byte d;
+    protected byte e;
+    protected byte f;
     protected boolean g;
     protected boolean h;
 
-    public PacketPlayOutEntity() {}
-
-    public PacketPlayOutEntity(int i) {
-        this.a = i;
+    public PacketPlayOutEntity() {
     }
 
-    public void a(PacketDataSerializer packetdataserializer) throws IOException {
-        this.a = packetdataserializer.e();
+    public PacketPlayOutEntity(int var1) {
+        this.a = var1;
     }
 
-    public void b(PacketDataSerializer packetdataserializer) throws IOException {
-        packetdataserializer.b(this.a);
+    public void a(PacketDataSerializer var1) throws IOException {
+        this.a = var1.e();
     }
 
-    public void a(PacketListenerPlayOut packetlistenerplayout) {
-        packetlistenerplayout.a(this);
+    public void b(PacketDataSerializer var1) throws IOException {
+        var1.b(this.a);
+    }
+
+    public void a(PacketListenerPlayOut var1) {
+        var1.a(this);
     }
 
     public String toString() {
         return "Entity_" + super.toString();
     }
 
-    public static class PacketPlayOutEntityLook extends PacketPlayOutEntity {
+    public int getA() {
+        return this.a;
+    }
 
+    public byte getB() {
+        return this.b;
+    }
+
+    public byte getC() {
+        return this.c;
+    }
+
+    public byte getD() {
+        return this.d;
+    }
+
+    public byte getE() {
+        return this.e;
+    }
+
+    public byte getF() {
+        return this.f;
+    }
+
+    public boolean isG() {
+        return this.g;
+    }
+
+    public boolean isH() {
+        return this.h;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(byte b) {
+        this.b = b;
+    }
+
+    public void setC(byte c) {
+        this.c = c;
+    }
+
+    public void setD(byte d) {
+        this.d = d;
+    }
+
+    public void setE(byte e) {
+        this.e = e;
+    }
+
+    public void setF(byte f) {
+        this.f = f;
+    }
+
+    public void setG(boolean g) {
+        this.g = g;
+    }
+
+    public void setH(boolean h) {
+        this.h = h;
+    }
+
+    public static class PacketPlayOutEntityLook extends PacketPlayOutEntity {
         public PacketPlayOutEntityLook() {
             this.h = true;
         }
 
-        public PacketPlayOutEntityLook(int i, byte b0, byte b1, boolean flag) {
-            super(i);
-            this.e = b0;
-            this.f = b1;
+        public PacketPlayOutEntityLook(int var1, byte var2, byte var3, boolean var4) {
+            super(var1);
+            this.e = var2;
+            this.f = var3;
             this.h = true;
-            this.g = flag;
+            this.g = var4;
         }
 
-        public void a(PacketDataSerializer packetdataserializer) throws IOException {
-            super.a(packetdataserializer);
-            this.e = packetdataserializer.readByte();
-            this.f = packetdataserializer.readByte();
-            this.g = packetdataserializer.readBoolean();
+        public void a(PacketDataSerializer var1) throws IOException {
+            super.a(var1);
+            this.e = var1.readByte();
+            this.f = var1.readByte();
+            this.g = var1.readBoolean();
         }
 
-        public void b(PacketDataSerializer packetdataserializer) throws IOException {
-            super.b(packetdataserializer);
-            packetdataserializer.writeByte(this.e);
-            packetdataserializer.writeByte(this.f);
-            packetdataserializer.writeBoolean(this.g);
+        public void b(PacketDataSerializer var1) throws IOException {
+            super.b(var1);
+            var1.writeByte(this.e);
+            var1.writeByte(this.f);
+            var1.writeBoolean(this.g);
         }
     }
 
     public static class PacketPlayOutRelEntityMove extends PacketPlayOutEntity {
-
-        public PacketPlayOutRelEntityMove() {}
-
-        public PacketPlayOutRelEntityMove(int i, byte b0, byte b1, byte b2, boolean flag) {
-            super(i);
-            this.b = b0;
-            this.c = b1;
-            this.d = b2;
-            this.g = flag;
+        public PacketPlayOutRelEntityMove() {
         }
 
-        public void a(PacketDataSerializer packetdataserializer) throws IOException {
-            super.a(packetdataserializer);
-            this.b = packetdataserializer.readByte();
-            this.c = packetdataserializer.readByte();
-            this.d = packetdataserializer.readByte();
-            this.g = packetdataserializer.readBoolean();
+        public PacketPlayOutRelEntityMove(int var1, byte var2, byte var3, byte var4, boolean var5) {
+            super(var1);
+            this.b = var2;
+            this.c = var3;
+            this.d = var4;
+            this.g = var5;
         }
 
-        public void b(PacketDataSerializer packetdataserializer) throws IOException {
-            super.b(packetdataserializer);
-            packetdataserializer.writeByte(this.b);
-            packetdataserializer.writeByte(this.c);
-            packetdataserializer.writeByte(this.d);
-            packetdataserializer.writeBoolean(this.g);
+        public void a(PacketDataSerializer var1) throws IOException {
+            super.a(var1);
+            this.b = var1.readByte();
+            this.c = var1.readByte();
+            this.d = var1.readByte();
+            this.g = var1.readBoolean();
+        }
+
+        public void b(PacketDataSerializer var1) throws IOException {
+            super.b(var1);
+            var1.writeByte(this.b);
+            var1.writeByte(this.c);
+            var1.writeByte(this.d);
+            var1.writeBoolean(this.g);
         }
     }
 
     public static class PacketPlayOutRelEntityMoveLook extends PacketPlayOutEntity {
-
         public PacketPlayOutRelEntityMoveLook() {
             this.h = true;
         }
 
-        public PacketPlayOutRelEntityMoveLook(int i, byte b0, byte b1, byte b2, byte b3, byte b4, boolean flag) {
-            super(i);
-            this.b = b0;
-            this.c = b1;
-            this.d = b2;
-            this.e = b3;
-            this.f = b4;
-            this.g = flag;
+        public PacketPlayOutRelEntityMoveLook(int var1, byte var2, byte var3, byte var4, byte var5, byte var6, boolean var7) {
+            super(var1);
+            this.b = var2;
+            this.c = var3;
+            this.d = var4;
+            this.e = var5;
+            this.f = var6;
+            this.g = var7;
             this.h = true;
         }
 
-        public void a(PacketDataSerializer packetdataserializer) throws IOException {
-            super.a(packetdataserializer);
-            this.b = packetdataserializer.readByte();
-            this.c = packetdataserializer.readByte();
-            this.d = packetdataserializer.readByte();
-            this.e = packetdataserializer.readByte();
-            this.f = packetdataserializer.readByte();
-            this.g = packetdataserializer.readBoolean();
+        public void a(PacketDataSerializer var1) throws IOException {
+            super.a(var1);
+            this.b = var1.readByte();
+            this.c = var1.readByte();
+            this.d = var1.readByte();
+            this.e = var1.readByte();
+            this.f = var1.readByte();
+            this.g = var1.readBoolean();
         }
 
-        public void b(PacketDataSerializer packetdataserializer) throws IOException {
-            super.b(packetdataserializer);
-            packetdataserializer.writeByte(this.b);
-            packetdataserializer.writeByte(this.c);
-            packetdataserializer.writeByte(this.d);
-            packetdataserializer.writeByte(this.e);
-            packetdataserializer.writeByte(this.f);
-            packetdataserializer.writeBoolean(this.g);
+        public void b(PacketDataSerializer var1) throws IOException {
+            super.b(var1);
+            var1.writeByte(this.b);
+            var1.writeByte(this.c);
+            var1.writeByte(this.d);
+            var1.writeByte(this.e);
+            var1.writeByte(this.f);
+            var1.writeBoolean(this.g);
         }
     }
 }

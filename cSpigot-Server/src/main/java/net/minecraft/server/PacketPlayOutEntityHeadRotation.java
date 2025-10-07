@@ -3,11 +3,11 @@ package net.minecraft.server;
 import java.io.IOException;
 
 public class PacketPlayOutEntityHeadRotation implements Packet<PacketListenerPlayOut> {
-
     private int a;
     private byte b;
 
-    public PacketPlayOutEntityHeadRotation() {}
+    public PacketPlayOutEntityHeadRotation() {
+    }
 
     public PacketPlayOutEntityHeadRotation(Entity entity, byte b0) {
         this.a = entity.getId();
@@ -26,5 +26,21 @@ public class PacketPlayOutEntityHeadRotation implements Packet<PacketListenerPla
 
     public void a(PacketListenerPlayOut packetlistenerplayout) {
         packetlistenerplayout.a(this);
+    }
+
+    public int getA() {
+        return this.a;
+    }
+
+    public byte getB() {
+        return this.b;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(byte b) {
+        this.b = b;
     }
 }

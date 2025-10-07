@@ -3,11 +3,11 @@ package net.minecraft.server;
 import java.io.IOException;
 
 public class PacketPlayOutAnimation implements Packet<PacketListenerPlayOut> {
-
     private int a;
     private int b;
 
-    public PacketPlayOutAnimation() {}
+    public PacketPlayOutAnimation() {
+    }
 
     public PacketPlayOutAnimation(Entity entity, int i) {
         this.a = entity.getId();
@@ -26,5 +26,21 @@ public class PacketPlayOutAnimation implements Packet<PacketListenerPlayOut> {
 
     public void a(PacketListenerPlayOut packetlistenerplayout) {
         packetlistenerplayout.a(this);
+    }
+
+    public int getA() {
+        return this.a;
+    }
+
+    public int getB() {
+        return this.b;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(int b) {
+        this.b = b;
     }
 }

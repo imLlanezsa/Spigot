@@ -4,75 +4,139 @@ import java.io.IOException;
 import java.util.List;
 import java.util.UUID;
 
-/**
- * This Project is property of Refine Development.
- * Copyright © 2023, All Rights Reserved.
- * Redistribution of this Project is not allowed.
- *
- * @author mathssw , Sakiio_
- * @since 4/9/2022
- * @version cSpigot
- */
-
 public class PacketPlayOutNamedEntitySpawn implements Packet<PacketListenerPlayOut> {
-
-    public int a; public int getEntityId() { return this.a; } public void setEntityId(int id) { this.a = id; }
-    public UUID b; public UUID getUUID() { return this.b; } public void setUUID(UUID uuid) { this.b = uuid; }
-    public int c; public int getRawX() { return this.c; }
-    public int d; public int getRawY() { return this.d; }
-    public int e; public int getRawZ() { return this.e; }
-    public byte f; public byte getRawPitch() { return this.f; }
-    public byte g; public byte getRawYaw() { return this.g; }
-    public int h; public int getData() { return this.h; }
-    public DataWatcher i;
-    public List<DataWatcher.WatchableObject> j;
+    private int a;
+    private UUID b;
+    private int c;
+    private int d;
+    private int e;
+    private byte f;
+    private byte g;
+    private int h;
+    private DataWatcher i;
+    private List<DataWatcher.WatchableObject> j;
 
     public PacketPlayOutNamedEntitySpawn() {
     }
 
-    public PacketPlayOutNamedEntitySpawn(EntityHuman var1) {
-        this.a = var1.getId();
-        this.b = var1.getProfile().getId();
-        this.c = MathHelper.floor(var1.locX * 32.0D);
-        this.d = MathHelper.floor(var1.locY * 32.0D);
-        this.e = MathHelper.floor(var1.locZ * 32.0D);
-        this.f = (byte)((int)(var1.yaw * 256.0F / 360.0F));
-        this.g = (byte)((int)(var1.pitch * 256.0F / 360.0F));
-        ItemStack var2 = var1.inventory.getItemInHand();
-        this.h = var2 == null ? 0 : Item.getId(var2.getItem());
-        try {
-            this.i = var1.getDataWatcher();
-        } catch (NullPointerException e) {
-            this.i = var1.getDataWatchercSpigot();
-        }
+    public PacketPlayOutNamedEntitySpawn(EntityHuman entityhuman) {
+        this.a = entityhuman.getId();
+        this.b = entityhuman.getProfile().getId();
+        this.c = MathHelper.floor(entityhuman.locX * (double)32.0F);
+        this.d = MathHelper.floor(entityhuman.locY * (double)32.0F);
+        this.e = MathHelper.floor(entityhuman.locZ * (double)32.0F);
+        this.f = (byte)((int)(entityhuman.yaw * 256.0F / 360.0F));
+        this.g = (byte)((int)(entityhuman.pitch * 256.0F / 360.0F));
+        ItemStack itemstack = entityhuman.inventory.getItemInHand();
+        this.h = itemstack == null ? 0 : Item.getId(itemstack.getItem());
+        this.i = entityhuman.getDataWatcher();
     }
 
-    public void a(PacketDataSerializer var1) throws IOException {
-        this.a = var1.e();
-        this.b = var1.g();
-        this.c = var1.readInt();
-        this.d = var1.readInt();
-        this.e = var1.readInt();
-        this.f = var1.readByte();
-        this.g = var1.readByte();
-        this.h = var1.readShort();
-        this.j = DataWatcher.b(var1);
+    public void a(PacketDataSerializer packetdataserializer) throws IOException {
+        this.a = packetdataserializer.e();
+        this.b = packetdataserializer.g();
+        this.c = packetdataserializer.readInt();
+        this.d = packetdataserializer.readInt();
+        this.e = packetdataserializer.readInt();
+        this.f = packetdataserializer.readByte();
+        this.g = packetdataserializer.readByte();
+        this.h = packetdataserializer.readShort();
+        this.j = DataWatcher.b(packetdataserializer);
     }
 
-    public void b(PacketDataSerializer var1) throws IOException {
-        var1.b(this.a);
-        var1.a(this.b);
-        var1.writeInt(this.c);
-        var1.writeInt(this.d);
-        var1.writeInt(this.e);
-        var1.writeByte(this.f);
-        var1.writeByte(this.g);
-        var1.writeShort(this.h);
-        this.i.a(var1);
+    public void b(PacketDataSerializer packetdataserializer) throws IOException {
+        packetdataserializer.b(this.a);
+        packetdataserializer.a(this.b);
+        packetdataserializer.writeInt(this.c);
+        packetdataserializer.writeInt(this.d);
+        packetdataserializer.writeInt(this.e);
+        packetdataserializer.writeByte(this.f);
+        packetdataserializer.writeByte(this.g);
+        packetdataserializer.writeShort(this.h);
+        this.i.a(packetdataserializer);
     }
 
-    public void a(PacketListenerPlayOut var1) {
-        var1.a(this);
+    public void a(PacketListenerPlayOut packetlistenerplayout) {
+        packetlistenerplayout.a(this);
+    }
+
+    public int getA() {
+        return this.a;
+    }
+
+    public UUID getB() {
+        return this.b;
+    }
+
+    public int getC() {
+        return this.c;
+    }
+
+    public int getD() {
+        return this.d;
+    }
+
+    public int getE() {
+        return this.e;
+    }
+
+    public byte getF() {
+        return this.f;
+    }
+
+    public byte getG() {
+        return this.g;
+    }
+
+    public int getH() {
+        return this.h;
+    }
+
+    public DataWatcher getI() {
+        return this.i;
+    }
+
+    public List<DataWatcher.WatchableObject> getJ() {
+        return this.j;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(UUID b) {
+        this.b = b;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
+
+    public void setD(int d) {
+        this.d = d;
+    }
+
+    public void setE(int e) {
+        this.e = e;
+    }
+
+    public void setF(byte f) {
+        this.f = f;
+    }
+
+    public void setG(byte g) {
+        this.g = g;
+    }
+
+    public void setH(int h) {
+        this.h = h;
+    }
+
+    public void setI(DataWatcher i) {
+        this.i = i;
+    }
+
+    public void setJ(List<DataWatcher.WatchableObject> j) {
+        this.j = j;
     }
 }
-
