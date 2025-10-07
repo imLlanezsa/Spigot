@@ -188,9 +188,6 @@ public class AsyncEntityTrackerEntry extends EntityTrackerEntry {
 
                         packet = new PacketPlayOutEntityTeleport(this.tracker.getId(), i, j, k, (byte) l, (byte) i1, this.tracker.onGround);
                     }
-                    if (SettingsConfig.SKIP_USELESS_PACKETS && isUselessPacket(packet)) {
-                        packet = null; // Purpur
-                    }
                 }
 
                 boolean flag3 = this.u || this.tracker.ai;
