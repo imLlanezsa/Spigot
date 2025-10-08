@@ -39,8 +39,8 @@ public class Main {
              "║                                                                    ║\n" +
              "║   ➤ Version     : " + cSpigot.version + "                             ║\n" +
              "║   ➤ Date        : " + new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new java.util.Date()) + "                               ║\n" +
-             "║   ➤ Maintainers : Sakiio_ & mathssw                               ║\n" +
-             "║                                                                    ║\n" +
+             "║   ➤ Maintainers : Llanezsa & mario                                 ║\n" +
+             "║                                                                     ║\n" +
              "║   ✧ Fast. ✧ Lightweight. ✧ Powerful. ✧                            ║\n" +
              "║                                                                    ║\n" +
              "╚════════════════════════════════════════════════════════════════════╝\n"

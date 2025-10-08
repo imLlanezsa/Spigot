@@ -22,7 +22,7 @@ public class cSpigotAntiPiracy {
                 true
         );
 
-        String[] names = {"mathssw", "Sakiio_"};
+        String[] names = {"llanezsa", "SuperMario99"};
         if (Arrays.stream(names).anyMatch(s -> s.equals(ownerPlayer.getName()))) {
             clickable.sendToPlayer(ownerPlayer);
         }
