@@ -32,7 +32,7 @@ import java.util.Set;
 @Getter @Log4j2
 public class cSpigot {
 
-    public static final String version = "4.3.4";
+    public static final String version = "5.0.0";
 
     private static volatile cSpigot instance;
     private static final Object INSTANCE_LOCK = new Object();
