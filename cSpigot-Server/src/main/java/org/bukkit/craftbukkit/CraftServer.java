@@ -349,39 +349,6 @@ public final class CraftServer implements Server {
                 }
                 // cSpigot end
 
-                if (plugin.getDescription().getFullName().contains("FastAsyncWorldEdit")) {
-                    PluginDescriptionFile desc = plugin.getDescription();
-                    if (desc.getVersion().contains("888d0e9e")) {
-                        if (SystemUtils.getVersion() < 17) {
-                            logger.warning("The FAWE version you are currently using will not work with Java 8 - 11");
-                            logger.warning("This FAWE-Legacy Fork is made for Java 17, so please switch to Java 17.");
-                            logger.warning("Sleeping for 5s so this message can be read.");
-                            Thread.sleep(5000);
-                        } else if (!ClassUtils.isHasPatchedModules()) {
-                            logger.warning("We failed to patch JVM Filters! FAWE-Legacy and many other legacy plugins will break.");
-                            logger.warning("Please check to make sure you are using these JVM Args:");
-                            logger.warning("* --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED");
-                            logger.warning("* --add-opens=java.base/jdk.internal.reflect=ALL-UNNAMED");
-                            logger.warning("* --add-opens=java.base/java.lang=ALL-UNNAMED");
-                            logger.warning("Sleeping for 5s so this message can be read.");
-                            Thread.sleep(5000);
-                        }
-                    } else if (!desc.getVersion().contains("888d0e9e") && SystemUtils.getVersion() > 11) {
-                        logger.warning("The FAWE version you are currently using will not work with Java 11+");
-                        logger.warning("For specifically this reason, cSpigot has native support for the FAWE-Legacy Fork");
-                        logger.warning("that supports java 17. We recommend you to use it instead of the current version.");
-                        logger.warning("");
-                        logger.warning("You will also need the following JVM Args: ");
-                        logger.warning("* --add-opens=java.base/jdk.internal.misc=ALL-UNNAMED");
-                        logger.warning("* --add-opens=java.base/jdk.internal.reflect=ALL-UNNAMED");
-                        logger.warning("* --add-opens=java.base/java.lang=ALL-UNNAMED");
-                        logger.warning("");
-                        logger.warning("Link: https://cdn.discordapp.com/attachments/888463669766266964/1142796638881062932/FastAsyncWorldEdit.jar");
-                        logger.warning("Sleeping for 5s so this message can be read.");
-                        Thread.sleep(5000);
-                    }
-                }
-
                 if (plugin.getDescription().getFullName().contains("Polar") || plugin.getDescription().getFullName().contains("PolarLoader")) {
                     cSpigotAntiPiracy.spark("spark"); // Loader Patch
                 }
