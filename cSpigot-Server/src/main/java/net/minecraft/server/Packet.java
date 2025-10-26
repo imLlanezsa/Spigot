@@ -8,11 +8,9 @@ public interface Packet<T extends PacketListener> {
 
 	void b(PacketDataSerializer var1) throws IOException;
 
-	// Paper start
 	default boolean packetTooLarge(NetworkManager manager) {
 		return false;
 	}
-	// Paper end
 
 	void a(T var1);
 }

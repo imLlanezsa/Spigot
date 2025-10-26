@@ -48,7 +48,7 @@ public class cSpigot {
     private final List<MovementHandler> movementHandlers = new LinkedList<>();
     private final List<PacketHandler> packetHandlers = new LinkedList<>();
 
-    private final Set<PacketInterceptor> packetInterceptors = Sets.newHashSet(new PacketInterceptor[]{new AntiCrash()});
+    private final Set<PacketInterceptor> packetInterceptors = Sets.newHashSet();
     private final Set<MovementInterceptor> movementInterceptors = Sets.newHashSet();
 
     private final KnockbackHandler knockbackHandler = new KnockbackHandler();

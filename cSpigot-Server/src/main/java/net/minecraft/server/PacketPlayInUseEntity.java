@@ -17,7 +17,7 @@ public class PacketPlayInUseEntity implements Packet<PacketListenerPlayIn> {
     public void a(PacketDataSerializer packetdataserializer) throws IOException {
         this.a = packetdataserializer.e();
         this.action = (EnumEntityUseAction)packetdataserializer.a(EnumEntityUseAction.class);
-        if (this.action == PacketPlayInUseEntity.EnumEntityUseAction.INTERACT_AT) {
+        if (this.action == net.minecraft.server.PacketPlayInUseEntity.EnumEntityUseAction.INTERACT_AT) {
             this.c = new Vec3D((double)packetdataserializer.readFloat(), (double)packetdataserializer.readFloat(), (double)packetdataserializer.readFloat());
         }
 
@@ -26,7 +26,7 @@ public class PacketPlayInUseEntity implements Packet<PacketListenerPlayIn> {
     public void b(PacketDataSerializer packetdataserializer) throws IOException {
         packetdataserializer.b(this.a);
         packetdataserializer.a(this.action);
-        if (this.action == PacketPlayInUseEntity.EnumEntityUseAction.INTERACT_AT) {
+        if (this.action == net.minecraft.server.PacketPlayInUseEntity.EnumEntityUseAction.INTERACT_AT) {
             packetdataserializer.writeFloat((float)this.c.a);
             packetdataserializer.writeFloat((float)this.c.b);
             packetdataserializer.writeFloat((float)this.c.c);
@@ -70,16 +70,16 @@ public class PacketPlayInUseEntity implements Packet<PacketListenerPlayIn> {
         this.action = action;
     }
 
-    public void setC(Vec3D c) {
-        this.c = c;
-    }
-
-    public static enum EnumEntityUseAction {
+    public enum EnumEntityUseAction {
         INTERACT,
         ATTACK,
         INTERACT_AT;
 
         private EnumEntityUseAction() {
         }
+    }
+
+    public void setC(Vec3D c) {
+        this.c = c;
     }
 }

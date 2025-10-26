@@ -3,12 +3,12 @@ package net.minecraft.server;
 import java.io.IOException;
 
 public class PacketPlayOutAttachEntity implements Packet<PacketListenerPlayOut> {
-
     private int a;
     private int b;
     private int c;
 
-    public PacketPlayOutAttachEntity() {}
+    public PacketPlayOutAttachEntity() {
+    }
 
     public PacketPlayOutAttachEntity(int i, Entity entity, Entity entity1) {
         this.a = i;
@@ -32,4 +32,27 @@ public class PacketPlayOutAttachEntity implements Packet<PacketListenerPlayOut> 
         packetlistenerplayout.a(this);
     }
 
+    public int getA() {
+        return this.a;
+    }
+
+    public int getB() {
+        return this.b;
+    }
+
+    public int getC() {
+        return this.c;
+    }
+
+    public void setA(int a) {
+        this.a = a;
+    }
+
+    public void setB(int b) {
+        this.b = b;
+    }
+
+    public void setC(int c) {
+        this.c = c;
+    }
 }
