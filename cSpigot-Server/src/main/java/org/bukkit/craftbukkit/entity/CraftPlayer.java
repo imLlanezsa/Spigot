@@ -80,6 +80,8 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
     private final Set<String> channels = new HashSet<>();
     private final Set<UUID> hiddenPlayers = new ObjectOpenHashSet<>();
     private final Map<Player, Integer> entityIds = new WeakHashMap<>();
+    private boolean showInvisibles;
+    public final Set<Integer> invisibles = new HashSet();
     private int hash = 0;
     private double health = 20;
     private boolean scaledHealth = false;
@@ -93,6 +95,57 @@ public class CraftPlayer extends CraftHumanEntity implements Player {
 
     public GameProfile getProfile() {
         return getHandle().getProfile();
+    }
+
+    public void showInvisibles(boolean show) {
+        if (show != this.showInvisibles) {
+            this.showInvisibles = show;
+            EntityTracker tracker = ((WorldServer)this.entity.world).tracker;
+
+            for(Entity entity : this.getHandle().world.entityList) {
+                if (entity.isInvisible()) {
+                    EntityTrackerEntry trackerEntry = (EntityTrackerEntry)tracker.trackedEntities.get(entity.getId());
+                    if (trackerEntry != null && trackerEntry.trackedPlayers.contains(this.getHandle())) {
+                        this.getHandle().playerConnection.sendPacket(new PacketPlayOutEntityMetadata(entity.getId(), entity.getDataWatcher(), true));
+                    }
+                }
+            }
+        }
+
+    }
+
+    public boolean canSeeInvisible(Player player) {
+        return this.invisibles.contains(((CraftPlayer)player).getHandle().getId());
+    }
+
+    public void showInvisible(Player player) {
+        if (!this.canSeeInvisible(player)) {
+            EntityTracker tracker = ((WorldServer)this.entity.world).tracker;
+            EntityPlayer entityPlayer = ((CraftPlayer)player).getHandle();
+            if (entityPlayer.isInvisible()) {
+                EntityTrackerEntry trackerEntry = (EntityTrackerEntry)tracker.trackedEntities.get(entityPlayer.getId());
+                if (trackerEntry != null && trackerEntry.trackedPlayers.contains(this.getHandle())) {
+                    this.getHandle().playerConnection.sendPacket(new PacketPlayOutEntityMetadata(entityPlayer.getId(), this.entity.getDataWatcher(), true));
+                    this.invisibles.add(this.entity.getId());
+                }
+            }
+        }
+
+    }
+
+    public void hideInvisible(Player player) {
+        if (this.canSeeInvisible(player)) {
+            EntityTracker tracker = ((WorldServer)this.entity.world).tracker;
+            EntityPlayer entityPlayer = ((CraftPlayer)player).getHandle();
+            if (entityPlayer.isInvisible()) {
+                EntityTrackerEntry trackerEntry = (EntityTrackerEntry)tracker.trackedEntities.get(entityPlayer.getId());
+                if (trackerEntry != null && trackerEntry.trackedPlayers.contains(this.getHandle())) {
+                    this.getHandle().playerConnection.sendPacket(new PacketPlayOutEntityMetadata(entityPlayer.getId(), this.entity.getDataWatcher(), true));
+                    this.invisibles.remove(this.entity.getId());
+                }
+            }
+        }
+
     }
 
     @Override

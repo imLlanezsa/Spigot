@@ -1,6 +1,5 @@
 package io.github.cspigot;
 
-import com.google.common.collect.Sets;
 import io.github.cspigot.api.chunk.ChunkAPI;
 import io.github.cspigot.api.handlers.PacketAPI;
 import io.github.cspigot.api.handlers.impl.MovementHandler;
@@ -12,10 +11,7 @@ import io.github.cspigot.config.SettingsConfig;
 import io.github.cspigot.feature.async.threading.ThreadingManager;
 import io.github.cspigot.feature.console.filter.LogFilter;
 import io.github.cspigot.feature.pack.ResourcePackHandler;
-import io.github.cspigot.interceptor.MovementInterceptor;
-import io.github.cspigot.interceptor.PacketInterceptor;
 import io.github.cspigot.knockback.KnockbackHandler;
-import io.github.cspigot.patch.AntiCrash;
 import io.github.cspigot.plugin.ServerSidePlugin;
 import lombok.Getter;
 import lombok.extern.log4j.Log4j2;
@@ -27,7 +23,6 @@ import org.bukkit.craftbukkit.Main;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 @Getter @Log4j2
 public class cSpigot {
@@ -47,9 +42,6 @@ public class cSpigot {
 
     private final List<MovementHandler> movementHandlers = new LinkedList<>();
     private final List<PacketHandler> packetHandlers = new LinkedList<>();
-
-    private final Set<PacketInterceptor> packetInterceptors = Sets.newHashSet();
-    private final Set<MovementInterceptor> movementInterceptors = Sets.newHashSet();
 
     private final KnockbackHandler knockbackHandler = new KnockbackHandler();
     private final ServerSidePlugin serverSidePlugin = new ServerSidePlugin();
@@ -139,14 +131,6 @@ public class cSpigot {
         }
     }
 
-    public void registerPacketInterceptor(PacketInterceptor packetInterceptor) {
-        this.packetInterceptors.add(packetInterceptor);
-    }
-
-    public void registerMovementInterceptor(MovementInterceptor movementInterceptor) {
-        this.movementInterceptors.add(movementInterceptor);
-    }
-
     public void registerMovementHandler(MovementHandler movementHandler) {
         if (movementHandler == null) {
             log.warn("Attempted to register null MovementHandler");
@@ -169,13 +153,5 @@ public class cSpigot {
 
     public void removePacketHandler(PacketHandler packetHandler) {
         this.packetHandlers.remove(packetHandler);
-    }
-
-    public Set<PacketInterceptor> getPacketInterceptors() {
-        return this.packetInterceptors;
-    }
-
-    public Set<MovementInterceptor> getMovementInterceptors() {
-        return this.movementInterceptors;
     }
 }
