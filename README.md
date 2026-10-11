@@ -1,3 +1,6 @@
+Carbon Spigot fork made by Mathssw and Sakiio_ but with some fixes by SuperMario99 and llanezsa
+
+
 <div align="center">
   <h1>⚙️ cSpigot Custom</h1>
   <p><i>Last updated: 2025-05-04 02:29:21 UTC by @mathssw</i></p>
